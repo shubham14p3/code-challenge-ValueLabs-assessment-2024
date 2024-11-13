@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import List from "./ui/List"; // Importing List component from /ui
+import { useDispatch, useSelector } from "react-redux";
+import { setPokemonList } from "./redux/pokemonSlice";
+import { RootState } from "./redux/store";
 
 const api = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
-interface Pokemon {
-  name: string;
-  url: string;
-}
-
 const App = () => {
-  const [pkList, setPkList] = useState<Pokemon[]>([]);
+  const dispatch = useDispatch();
+  const pkList = useSelector((state: RootState) => state.pokemon.list);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
@@ -20,7 +19,7 @@ const App = () => {
         const res = await fetch(api);
         if (!res.ok) throw new Error("API error Post handling of API call");
         const data = await res.json();
-        setPkList(data.results);
+        dispatch(setPokemonList(data.results));
       } catch (error) {
         setErr("Failed to fetch Pokemon");
       } finally {
@@ -28,11 +27,11 @@ const App = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
-     <h1>Pokemon List:</h1>
+      <h1>Pokemon List:</h1>
       {loading && <p>Loading...</p>}
       {err && <p>{err}</p>}
       {!loading && !err && pkList.length > 0 ? (
