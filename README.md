@@ -23,7 +23,10 @@ Start the test by Forking this repository, and complete the following tasks:<br>
 ## Task 1:
 Assignment: Use the `api` found in `App.tsx` to make a request and fetch a list of all Pokémon.<br>
 Question 1: How did you manage to fetch the list and what tool did you use?<br>
+- I used fetch within useEffect to retrieve the list of Pokemon from the API endpoint. This approach loads the data when the component mounts. fetch was being simply called here, as it provides a promise-based way to access APIs directly.
+
 Question 2: What steps would you take to future improve this?<br>
+- To improve, I’d consider adding caching (e.g., sessionStorage) to reduce redundant API calls on reload. Another step I could be implementing is pagination if we want to load more than 151 Pokemon or if the data set grows. Additionally, we can also explore React Query for better state management and background refreshing, which simplifies caching and syncs automatically.
 
 commit the code as `task-1`<br>
 

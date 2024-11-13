@@ -1,14 +1,50 @@
-import { List } from 'ui'
+import React, { useEffect, useState } from "react";
 
-const api = "https://pokeapi.co/api/v2/pokemon?limit=151"
+const api = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
-const App = () => {
-  return (
-  <>
-    <h1>Pokemon list:</h1>
-    <List />
-  </>
-  )
+interface Pokemon {
+  name: string;
+  url: string;
 }
 
-export default App
+const App = () => {
+  const [pkList, setPkList] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(api);
+        if (!res.ok) throw new Error("API error Post handling of API call");
+        const data = await res.json();
+        setPkList(data.results);
+      } catch (error) {
+        setErr("Failed to fetch Pokemon");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Pokemon List:</h1>
+      {loading && <p>Loading...</p>}
+      {err && <p>{err}</p>}
+      {!loading && !err && pkList.length > 0 ? (
+        <ul>
+          {pkList.map((pokemon, idx) => (
+            <li key={idx}>{pokemon.name}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No Pokemon data available.</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
