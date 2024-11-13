@@ -58,11 +58,48 @@ Assignment: Create button for each pokémon where an Action will be dispatched t
 
 ## Task 6:
 Question 7: explain the use of `useEffect` hook in React
+- The useEffect hook is essential for handling side effects in functional components. It lets synchronize component with external systems, such as APIs or subscriptions, by running code after the render cycle. The hook accepts a dependency array, which helps control when the effect should re-run—like only once on mount, or every time a specific state changes. This makes useEffect ideal for tasks like fetching data, manually interacting with the DOM, or setting up timers.
+
 Question 8: What is A High Order Component?
+- A Higher-Order Component (HOC) is a pattern in React that allows us to create components with enhanced functionality. It’s essentially a function that takes a component and returns a new one with added features. This is particularly useful in situations where multiple components need similar logic (e.g., logging, access control, or performance tracking) without duplicating code. HOCs are great for abstracting away repetitive logic, making components more composable and keeping code DRY (Don't Repeat Yourself).
+
 Question 9: What use cases would a HOC be usefull?
+- HOCs shine in scenarios where you need to inject reusable logic into components. Common use cases include adding authentication checks, handling UI theming, fetching or caching data, and implementing error boundaries. By wrapping components in an HOC, you create a consistent and reusable pattern for these behaviors, which helps with maintainability and readability across larger codebases.
+
 Question 10: What does it indicate when a component is prefixed with `use` and `with`
+- In React, a component prefixed with use generally indicates a custom hook, which is a function that encapsulates reusable logic for state or effects within functional components. Meanwhile, with often suggests an HOC, such as withAuth or withRouter, which wraps a component to provide it with additional props or behavior. This naming convention makes it easy to distinguish hooks from HOCs and understand their roles in a codebase.
+
 Question 11: What is a Generic type in typescript?
+- Generic types in TypeScript are a powerful feature that allows developers to define components, functions, or classes that work with various data types in a type-safe way. By using generics, you create flexible and reusable code without sacrificing type safety. For example, a generic function that operates on arrays can handle any data type of array while preserving the type information, providing both flexibility and strict type-checking.
+
 Question 12: Whats the difference between a controlled and uncontrolled input in React?
+- Controlled inputs in React are managed by component state, which means every change to the input value immediately updates the state and re-renders the component. This allows precise control over the input value, making it ideal for forms that require validation or conditional behavior. Uncontrolled inputs, on the other hand, rely on the DOM to hold their current values, and you use a ref to access them when needed. While controlled inputs offer more control and flexibility, uncontrolled inputs are simpler and more efficient for non-critical data capture, as they don’t require state updates with each change.
+
+### Developing tools
+
+- Typescript
+- HTML5
+- CSS
+- Redux-toolkit
+- PNPM
+
+### Testing Tools
+
+- Vitest
+
+### Styling and Lints
+
+- Eslint
+- Stylelint
+
+
+## Authors
+
+👤 **Shubham Raj**
+
+- Github: [@ShubhamRaj](https://github.com/shubham14p3)
+- Linkedin: [Shubham Raj](https://www.linkedin.com/in/shubham14p3/)
+
 
 
 
