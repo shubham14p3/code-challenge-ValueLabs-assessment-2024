@@ -53,7 +53,8 @@ commit the code as `task-4`<br>
 
 ## Task 5:
 Assignment: Create button for each pokémon where an Action will be dispatched to remove the pokémon from the store 
-Question 6: How can you verify the action has been dispatched?
+- We can verify the removePokemon action was dispatched as follow:- First, we can use Redux DevTools to watch for removePokemon actions in the action log; we’ll see each dispatch there with the updated state reflecting the Pokemon removal. Second way we can check is to add a simple console.log in handleRemove, so each time you click "Remove," it logs to the console, confirming the action is triggered.
+
 
 ## Task 6:
 Question 7: explain the use of `useEffect` hook in React
