@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import List from "./ui/List"; // Importing List component from /ui
 
 const api = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
@@ -31,15 +32,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>Pokemon List:</h1>
+     <h1>Pokemon List:</h1>
       {loading && <p>Loading...</p>}
       {err && <p>{err}</p>}
       {!loading && !err && pkList.length > 0 ? (
-        <ul>
-          {pkList.map((pokemon, idx) => (
-            <li key={idx}>{pokemon.name}</li>
-          ))}
-        </ul>
+        <List items={pkList} />
       ) : (
         <p>No Pokemon data available.</p>
       )}
